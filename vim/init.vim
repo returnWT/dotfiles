@@ -8,6 +8,7 @@ Plug('scrooloose/nerdtree') " File tree
 Plug('tpope/vim-commentary') " Comment lines
 Plug('tpope/vim-surround') " Easily switch/add surrounding characters
 Plug('airblade/vim-gitgutter') " Show gutter with git status per line
+Plug('nathanaelkane/vim-indent-guides') " Indent guides
 
 " Ruby
 Plug('vim-ruby/vim-ruby') " Ruby support
@@ -109,3 +110,5 @@ let g:vimfiler_as_default_explorer = 1
 let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ }
+
+let g:indent_guides_guide_size=1
