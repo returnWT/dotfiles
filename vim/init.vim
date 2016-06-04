@@ -6,8 +6,8 @@ Plug('itchyny/lightline.vim') " bottom status bar
 Plug('vim-scripts/mako.vim') " mako template syntax support
 Plug('scrooloose/nerdtree') " File tree
 Plug('tpope/vim-commentary') " Comment lines
-Plug('nathanaelkane/vim-indent-guides') " Indent guides
-Plug('tpope/vim-surround') " Ruby support
+Plug('tpope/vim-surround') " Easily switch/add surrounding characters
+Plug('airblade/vim-gitgutter') " Show gutter with git status per line
 
 " Ruby
 Plug('vim-ruby/vim-ruby') " Ruby support
@@ -43,7 +43,8 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-nnoremap <C-n> :call NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<cr>
+map <C-p> :relativenumbers!<cr>
 
 nnoremap ; :
 
