@@ -9,10 +9,14 @@ Plug('tpope/vim-commentary') " Comment lines
 Plug('tpope/vim-surround') " Easily switch/add surrounding characters
 Plug('airblade/vim-gitgutter') " Show gutter with git status per line
 Plug('nathanaelkane/vim-indent-guides') " Indent guides
+Plug('tpope/vim-sleuth') " Detect indentation
 
 " Ruby
 Plug('vim-ruby/vim-ruby') " Ruby support
 Plug('tpope/vim-endwise') " Add end keyword automatically
+
+" ColdFusion
+Plug('davejlong/cf-utils.vim') " ColdFusion ...
 
 call plug#end()
 
@@ -31,6 +35,21 @@ set nowrap
 " Insert lines without entering insert mode
 nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
 nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+
+" tab completion
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+" remap the tab key to do autocompletion or indentation depending on the
+" context (from http://www.vim.org/tips/tip.php?tip_id=102)
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
 
 set noerrorbells
 
@@ -54,6 +73,11 @@ nnoremap <ESC> :noh<ESC>
 " Use CTRL-S for saving
 noremap <C-s> :w<CR>
 vnoremap <C-s> <C-C>:w<CR>
+
+" Do actions without yanking
+map <leader>d "_d
+map <leader>p "_P
+map <leader>c "_c
 
 
 " UI
@@ -100,6 +124,14 @@ autocmd BufWritePre * :%s/\s\+$//e
 au FileType python set tabstop=4
 au FileType python set softtabstop=4
 au FileType python set shiftwidth=4
+
+" ColdFusion settings
+au FileType cfscript set tabstop=4
+au FileType cfscript set softtabstop=4
+au FileType cfscript set shiftwidth=4
+
+au FileType javascript set noexpandtab
+au FileType scss set noexpandtab
 
 " Other plugin settings
 

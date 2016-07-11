@@ -104,3 +104,5 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+alias http_server='python ~/dev/http-server.py'
