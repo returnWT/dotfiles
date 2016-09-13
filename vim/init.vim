@@ -10,6 +10,7 @@ Plug('tpope/vim-surround') " Easily switch/add surrounding characters
 Plug('airblade/vim-gitgutter') " Show gutter with git status per line
 Plug('nathanaelkane/vim-indent-guides') " Indent guides
 Plug('tpope/vim-sleuth') " Detect indentation
+Plug('chriskempson/base16-vim')
 
 " Ruby
 Plug('vim-ruby/vim-ruby') " Ruby support
@@ -91,7 +92,8 @@ let mapleader = ","
 syntax on
 set background=dark
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme jellybeans
+let base16colorspace=256
+colorscheme base16-eighties
 
 let &colorcolumn="72,".join(range(80,999),",")
 
