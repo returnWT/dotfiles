@@ -1,0 +1,11 @@
+# This is the default .slate file.
+# If no ~/.slate file exists this is the file that will be used.
+
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+
+bind -:cmd;shift move 0;0 screenSizeX;screenSizeY
+bind =:cmd;shift move screenSizeX*0.125;0 screenSizeX*0.75;screenSizeY
+
+bind 0:cmd;shift throw next resize
