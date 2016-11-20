@@ -15,7 +15,7 @@
   untracked = cyan
   deleted = red
 [user]
-	email = wouter@returnwt.net
+	email = wouter.toering@gmail.com
 	name = Wouter Toering
 [alias]
     st = status -s
