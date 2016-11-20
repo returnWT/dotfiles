@@ -93,7 +93,7 @@ syntax on
 set background=dark
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let base16colorspace=256
-colorscheme base16-eighties
+colorscheme jellybeans
 
 let &colorcolumn="72,".join(range(80,999),",")
 
