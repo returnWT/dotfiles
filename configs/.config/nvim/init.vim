@@ -1,23 +1,21 @@
 " Plugins
 call plug#begin()
 
-Plug('nanotech/jellybeans.vim') " color scheme
 Plug('itchyny/lightline.vim') " bottom status bar
-Plug('vim-scripts/mako.vim') " mako template syntax support
-Plug('scrooloose/nerdtree') " File tree
 Plug('tpope/vim-commentary') " Comment lines
 Plug('tpope/vim-surround') " Easily switch/add surrounding characters
 Plug('airblade/vim-gitgutter') " Show gutter with git status per line
-Plug('nathanaelkane/vim-indent-guides') " Indent guides
-Plug('tpope/vim-sleuth') " Detect indentation
-Plug('chriskempson/base16-vim')
+Plug('ctrlpvim/ctrlp.vim')
 
-" Ruby
-Plug('vim-ruby/vim-ruby') " Ruby support
-Plug('tpope/vim-endwise') " Add end keyword automatically
+" Pretty colors
+Plug('nanotech/jellybeans.vim') " color scheme
 
-" ColdFusion
-Plug('davejlong/cf-utils.vim') " ColdFusion ...
+" Python related
+Plug('vim-scripts/mako.vim') " mako template syntax support
+
+" Ruby RIP
+" Plug('vim-ruby/vim-ruby') " Ruby support
+" Plug('tpope/vim-endwise') " Add end keyword automatically
 
 call plug#end()
 
@@ -28,8 +26,6 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 set backspace=2
-"set esckeys
-set pastetoggle=<F2>
 set cursorline
 set nowrap
 
@@ -64,8 +60,6 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-map <C-n> :NERDTreeToggle<cr>
-map <C-p> :relativenumbers!<cr>
 
 nnoremap ; :
 
@@ -74,11 +68,6 @@ nnoremap <ESC> :noh<ESC>
 " Use CTRL-S for saving
 noremap <C-s> :w<CR>
 vnoremap <C-s> <C-C>:w<CR>
-
-" Do actions without yanking
-map <leader>d "_d
-map <leader>p "_P
-map <leader>c "_c
 
 
 " UI
@@ -93,9 +82,10 @@ syntax on
 set background=dark
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let base16colorspace=256
+set termguicolors
 colorscheme jellybeans
 
-let &colorcolumn="72,".join(range(80,999),",")
+let &colorcolumn="72,80"
 
 set list listchars=tab:»·,trail:· " show extra space characters
 
@@ -127,11 +117,6 @@ au FileType python set tabstop=4
 au FileType python set softtabstop=4
 au FileType python set shiftwidth=4
 
-" ColdFusion settings
-au FileType cfscript set tabstop=4
-au FileType cfscript set softtabstop=4
-au FileType cfscript set shiftwidth=4
-
 au FileType javascript set noexpandtab
 au FileType scss set noexpandtab
 
@@ -145,4 +130,6 @@ let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ }
 
-let g:indent_guides_guide_size=1
+let g:ctrlp_custom_ignore = {'dir': '\v[\/](\.(git|hg|svn|dist)|node_modules|bower_components|WEB-INF|build|dist)$' }
+let g:ctrlp_working_path_mode = 0
+
