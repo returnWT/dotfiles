@@ -1,17 +1,23 @@
 " Plugins
 call plug#begin()
 
-Plug('itchyny/lightline.vim') " bottom status bar
+Plug('vim-airline/vim-airline')
 Plug('tpope/vim-commentary') " Comment lines
 Plug('tpope/vim-surround') " Easily switch/add surrounding characters
 Plug('airblade/vim-gitgutter') " Show gutter with git status per line
-Plug('ctrlpvim/ctrlp.vim')
+Plug('ctrlpvim/ctrlp.vim') " File browsing
+Plug('neomake/neomake') " async make runner
+Plug('dojoteef/neomake-autolint')
 
 " Pretty colors
 Plug('nanotech/jellybeans.vim') " color scheme
+Plug('jacoborus/tender.vim')
+Plug('morhetz/gruvbox')
+Plug('sjl/badwolf')
 
 " Python related
 Plug('vim-scripts/mako.vim') " mako template syntax support
+Plug('nvie/vim-flake8') " PEP8 nazism
 
 " Ruby RIP
 " Plug('vim-ruby/vim-ruby') " Ruby support
@@ -80,10 +86,13 @@ let mapleader = ","
 
 syntax on
 set background=dark
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let base16colorspace=256
 set termguicolors
-colorscheme jellybeans
+
+let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_improved_strings=0
+let g:gruvbox_improved_warnings=1
+colorscheme gruvbox
 
 let &colorcolumn="72,80"
 
@@ -123,13 +132,32 @@ au FileType scss set noexpandtab
 " Other plugin settings
 
 let g:gitgutter_sign_column_always = 1
-
 let g:vimfiler_as_default_explorer = 1
 
-let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
-      \ }
-
-let g:ctrlp_custom_ignore = {'dir': '\v[\/](\.(git|hg|svn|dist)|node_modules|bower_components|WEB-INF|build|dist)$' }
+let g:ctrlp_custom_ignore = {'dir': '\v[\/](\.(env|git|hg|svn|dist)|env|node_modules|bower_components|WEB-INF|build|dist)$' }
 let g:ctrlp_working_path_mode = 0
 
+let g:python_highlight_all=1
+let python_highlight_all=1
+
+let g:neomake_open_list = 0
+
+let g:neomake_warning_sign = {
+  \ 'text': '?',
+  \ 'texthl': 'ErrorMsg',
+  \ }
+let g:neomake_error_sign = {
+  \ 'text': '!',
+  \ 'texthl': 'ErrorMsg',
+  \ }
+
+let g:neomake_python_flake8_maker = {
+    \ 'args': ['--format=default'],
+    \ 'errorformat':
+        \ '%E%f:%l: could not compile,%-Z%p^,' .
+        \ '%A%f:%l:%c: %t%n %m,' .
+        \ '%A%f:%l: %t%n %m,' .
+        \ '%-G%.%#',
+    \ }
+
+let g:neomake_python_enabled_makers = ['flake8', 'pylint']
