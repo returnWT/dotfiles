@@ -7,7 +7,8 @@ Plug('tpope/vim-surround') " Easily switch/add surrounding characters
 Plug('airblade/vim-gitgutter') " Show gutter with git status per line
 Plug('ctrlpvim/ctrlp.vim') " File browsing
 Plug('neomake/neomake') " async make runner
-Plug('dojoteef/neomake-autolint')
+Plug('dojoteef/neomake-autolint') " run linting automatically (also in insert)
+Plug('scrooloose/nerdtree') " file browsing because why not
 
 " Pretty colors
 Plug('nanotech/jellybeans.vim') " color scheme
@@ -42,6 +43,8 @@ nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1
 " tab completion
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
+
+map <C-n> :NERDTreeToggle<CR>
 
 " remap the tab key to do autocompletion or indentation depending on the
 " context (from http://www.vim.org/tips/tip.php?tip_id=102)
@@ -134,7 +137,7 @@ au FileType scss set noexpandtab
 let g:gitgutter_sign_column_always = 1
 let g:vimfiler_as_default_explorer = 1
 
-let g:ctrlp_custom_ignore = {'dir': '\v[\/](\.(env|git|hg|svn|dist)|env|node_modules|bower_components|WEB-INF|build|dist)$' }
+let g:ctrlp_custom_ignore = {'dir': '\v[\/](\.(env|git|hg|svn|dist|egg-info)|env|node_modules|bower_components|WEB-INF|build|dist)$' }
 let g:ctrlp_working_path_mode = 0
 
 let g:python_highlight_all=1
