@@ -2,12 +2,12 @@
 call plug#begin()
 
 Plug('vim-airline/vim-airline')
+Plug('vim-airline/vim-airline-themes')
 Plug('tpope/vim-commentary') " Comment lines
 Plug('tpope/vim-surround') " Easily switch/add surrounding characters
 Plug('airblade/vim-gitgutter') " Show gutter with git status per line
 Plug('ctrlpvim/ctrlp.vim') " File browsing
 Plug('neomake/neomake') " async make runner
-Plug('dojoteef/neomake-autolint') " run linting automatically (also in insert)
 Plug('scrooloose/nerdtree') " file browsing because why not
 
 " Pretty colors
@@ -15,6 +15,8 @@ Plug('nanotech/jellybeans.vim') " color scheme
 Plug('jacoborus/tender.vim')
 Plug('morhetz/gruvbox')
 Plug('sjl/badwolf')
+Plug('chriskempson/base16-vim')
+Plug('thayerwilliams/vimbrant')
 
 " Python related
 Plug('vim-scripts/mako.vim') " mako template syntax support
@@ -92,10 +94,25 @@ set background=dark
 let base16colorspace=256
 set termguicolors
 
-let g:gruvbox_contrast_dark='soft'
-let g:gruvbox_improved_strings=0
-let g:gruvbox_improved_warnings=1
-colorscheme gruvbox
+"colorscheme base16-tomorrow-night
+colorscheme badwolf
+
+highlight clear SignColumn
+highlight VertSplit    ctermbg=236
+highlight ColorColumn  ctermbg=237
+highlight LineNr       ctermbg=236 ctermfg=240
+highlight CursorLineNr ctermbg=236 ctermfg=240
+highlight CursorLine   ctermbg=236
+highlight StatusLineNC ctermbg=238 ctermfg=0
+highlight StatusLine   ctermbg=240 ctermfg=12
+highlight IncSearch    ctermbg=3   ctermfg=1
+highlight Search       ctermbg=1   ctermfg=3
+highlight Visual       ctermbg=3   ctermfg=0
+highlight Pmenu        ctermbg=240 ctermfg=12
+highlight PmenuSel     ctermbg=3   ctermfg=1
+highlight SpellBad     ctermbg=0   ctermfg=1
+
+let g:airline_theme='raven'
 
 let &colorcolumn="72,80"
 
@@ -164,3 +181,6 @@ let g:neomake_python_flake8_maker = {
     \ }
 
 let g:neomake_python_enabled_makers = ['flake8', 'pylint']
+
+
+autocmd! BufReadPost,BufWritePost * Neomake
