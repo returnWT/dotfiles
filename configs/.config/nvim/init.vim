@@ -17,6 +17,10 @@ Plug('morhetz/gruvbox')
 Plug('sjl/badwolf')
 Plug('chriskempson/base16-vim')
 Plug('thayerwilliams/vimbrant')
+Plug('w0ng/vim-hybrid')
+Plug('rafi/awesome-vim-colorschemes')
+Plug('mswift42/vim-themes')
+Plug('flazz/vim-colorschemes')
 
 " Python related
 Plug('vim-scripts/mako.vim') " mako template syntax support
@@ -94,8 +98,9 @@ set background=dark
 let base16colorspace=256
 set termguicolors
 
+let g:gruvbox_contrast_dark="dark"
 "colorscheme base16-tomorrow-night
-colorscheme badwolf
+colorscheme codeschool
 
 highlight clear SignColumn
 highlight VertSplit    ctermbg=236
@@ -112,7 +117,7 @@ highlight Pmenu        ctermbg=240 ctermfg=12
 highlight PmenuSel     ctermbg=3   ctermfg=1
 highlight SpellBad     ctermbg=0   ctermfg=1
 
-let g:airline_theme='raven'
+let g:airline_theme='bubblegum'
 
 let &colorcolumn="72,80"
 
