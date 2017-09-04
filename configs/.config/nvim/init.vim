@@ -10,18 +10,8 @@ Plug('ctrlpvim/ctrlp.vim') " File browsing
 Plug('neomake/neomake') " async make runner
 Plug('scrooloose/nerdtree') " file browsing because why not
 
-" Pretty colors
-Plug('nanotech/jellybeans.vim') " color scheme
-Plug('jacoborus/tender.vim')
-Plug('morhetz/gruvbox')
-Plug('sjl/badwolf')
-Plug('chriskempson/base16-vim')
-Plug('thayerwilliams/vimbrant')
-Plug('w0ng/vim-hybrid')
-Plug('gmist/vim-palette')
-
 " Python related
-Plug('vim-scripts/mako.vim') " mako template syntax support
+" Plug('vim-scripts/mako.vim') " mako template syntax support
 Plug('nvie/vim-flake8') " PEP8 nazism
 
 " Ruby RIP
@@ -41,8 +31,8 @@ set cursorline
 set nowrap
 
 " Insert lines without entering insert mode
-nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
-nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR><ESC>
+nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR><ESC>
 
 " tab completion
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
@@ -96,25 +86,8 @@ set background=dark
 let base16colorspace=256
 set termguicolors
 
-"colorscheme base16-tomorrow-night
-colorscheme hybrid
+colorscheme molotov " Don't forget to copy into ~/.config/nvim/colors!
 
-highlight clear SignColumn
-highlight VertSplit    ctermbg=236
-highlight ColorColumn  ctermbg=237
-highlight LineNr       ctermbg=236 ctermfg=240
-highlight CursorLineNr ctermbg=236 ctermfg=240
-highlight CursorLine   ctermbg=236
-highlight StatusLineNC ctermbg=238 ctermfg=0
-highlight StatusLine   ctermbg=240 ctermfg=12
-highlight IncSearch    ctermbg=3   ctermfg=1
-highlight Search       ctermbg=1   ctermfg=3
-highlight Visual       ctermbg=3   ctermfg=0
-highlight Pmenu        ctermbg=240 ctermfg=12
-highlight PmenuSel     ctermbg=3   ctermfg=1
-highlight SpellBad     ctermbg=0   ctermfg=1
-
-let g:airline_theme='raven'
 let g:airline_theme='hybrid'
 
 let &colorcolumn="72,80"
