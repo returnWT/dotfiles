@@ -9,14 +9,15 @@ Plug('airblade/vim-gitgutter') " Show gutter with git status per line
 Plug('ctrlpvim/ctrlp.vim') " File browsing
 Plug('neomake/neomake') " async make runner
 Plug('scrooloose/nerdtree') " file browsing because why not
+Plug('chriskempson/base16-vim')
 
 " Python related
 " Plug('vim-scripts/mako.vim') " mako template syntax support
 Plug('nvie/vim-flake8') " PEP8 nazism
 
 " Ruby RIP
-" Plug('vim-ruby/vim-ruby') " Ruby support
-" Plug('tpope/vim-endwise') " Add end keyword automatically
+Plug('vim-ruby/vim-ruby') " Ruby support
+Plug('tpope/vim-endwise') " Add end keyword automatically
 
 call plug#end()
 
@@ -87,6 +88,7 @@ let base16colorspace=256
 set termguicolors
 
 colorscheme molotov " Don't forget to copy into ~/.config/nvim/colors!
+colorscheme base16-tomorrow-night " Don't forget to copy into ~/.config/nvim/colors!
 
 let g:airline_theme='hybrid'
 
@@ -127,7 +129,7 @@ au FileType scss set noexpandtab
 
 " Other plugin settings
 
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 let g:vimfiler_as_default_explorer = 1
 
 let g:ctrlp_custom_ignore = {'dir': '\v[\/](\.(env|git|hg|svn|dist|egg-info)|env|node_modules|bower_components|WEB-INF|build|dist)$' }
