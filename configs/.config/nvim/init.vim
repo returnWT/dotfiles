@@ -10,6 +10,9 @@ Plug('ctrlpvim/ctrlp.vim') " File browsing
 Plug('neomake/neomake') " async make runner
 Plug('scrooloose/nerdtree') " file browsing because why not
 Plug('chriskempson/base16-vim')
+Plug('ernstvanderlinden/vim-coldfusion')
+Plug('ciaranm/detectindent')
+Plug 'WouterToering/Breve'
 
 " Python related
 " Plug('vim-scripts/mako.vim') " mako template syntax support
@@ -19,7 +22,16 @@ Plug('nvie/vim-flake8') " PEP8 nazism
 Plug('vim-ruby/vim-ruby') " Ruby support
 Plug('tpope/vim-endwise') " Add end keyword automatically
 
+
+"TYPESCRIPT OOH NO
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
+Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/denite.nvim'
+
 call plug#end()
+
+let g:deoplete#enable_at_startup = 1
 
 " Indenting
 set smartindent
@@ -87,8 +99,11 @@ set background=dark
 let base16colorspace=256
 set termguicolors
 
-colorscheme molotov " Don't forget to copy into ~/.config/nvim/colors!
-colorscheme base16-tomorrow-night " Don't forget to copy into ~/.config/nvim/colors!
+let g:gruvbox_contrast_dark='hard'
+
+let g:sierra_Midnight = 1
+colorscheme breve " Don't forget to copy into ~/.config/nvim/colors!
+" colorscheme base16-tomorrow-night " Don't forget to copy into ~/.config/nvim/colors!
 
 let g:airline_theme='hybrid'
 
@@ -123,9 +138,16 @@ autocmd BufWritePre * :%s/\s\+$//e
 au FileType python set tabstop=4
 au FileType python set softtabstop=4
 au FileType python set shiftwidth=4
+au FileType php set tabstop=4
+au FileType php set softtabstop=4
+au FileType php set shiftwidth=4
+au FileType typescript set tabstop=2
+au FileType typescript set softtabstop=2
+au FileType typescript set shiftwidth=2
 
 au FileType javascript set noexpandtab
 au FileType scss set noexpandtab
+au FileType cf set noexpandtab
 
 " Other plugin settings
 
@@ -160,5 +182,8 @@ let g:neomake_python_flake8_maker = {
 
 let g:neomake_python_enabled_makers = ['flake8', 'pylint']
 
+let g:detectindent_preferred_when_mixed = 1
+
 
 autocmd! BufReadPost,BufWritePost * Neomake
+autocmd! BufRead *.cfc DetectIndent
