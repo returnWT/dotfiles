@@ -15,3 +15,5 @@ defaults write -g NSToolbarFullScreenAnimationDuration -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0
 defaults write com.apple.dock autohide-delay -float 0
 
+# Disable rendering files on wallpaper
+defaults write com.apple.finder CreateDesktop false
