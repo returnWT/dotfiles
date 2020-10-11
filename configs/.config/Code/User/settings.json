@@ -1,0 +1,34 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "workbench.colorTheme": "Darcula Theme from IntelliJ",
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "-l 100"
+    ],
+    "editor.formatOnSave": true,
+    "editor.fontFamily": "'Jetbrains mono nl medium', arial, 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.lineHeight": 20,
+    "workbench.activityBar.visible": true,
+    "python.showStartPage": false,
+    "editor.lineNumbers": "relative",
+    "window.menuBarVisibility": "toggle",
+    "workbench.editor.showIcons": false,
+    "workbench.iconTheme": null,
+    "files.exclude": {
+        "**/__pycache__/**": true
+    },
+    "explorer.decorations.colors": false,
+    "testExplorer.showOnRun": true,
+    "pythonTestExplorer.testFramework": "pytest",
+    "python.experiments.enabled": false,
+    "python.testing.pytestEnabled": true,
+    "testExplorer.codeLens": false,
+    "testExplorer.errorDecoration": false,
+    "testExplorer.addToEditorContextMenu": true,
+    "testExplorer.showCollapseButton": false,
+    "editor.codeLens": false,
+    "editor.hover.delay": 200,
+    "npm.fetchOnlinePackageInfo": false
+}
