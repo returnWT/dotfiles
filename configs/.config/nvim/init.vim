@@ -13,23 +13,63 @@ Plug('chriskempson/base16-vim')
 Plug('ernstvanderlinden/vim-coldfusion')
 Plug('ciaranm/detectindent')
 Plug 'WouterToering/Breve'
+Plug 'w0ng/vim-hybrid'
+Plug 'notpratheek/vim-sol'
+Plug 'junegunn/seoul256.vim'
 
 " Python related
 " Plug('vim-scripts/mako.vim') " mako template syntax support
 Plug('nvie/vim-flake8') " PEP8 nazism
+Plug 'lepture/vim-jinja'
 
 " Ruby RIP
 Plug('vim-ruby/vim-ruby') " Ruby support
 Plug('tpope/vim-endwise') " Add end keyword automatically
 
-
 "TYPESCRIPT OOH NO
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
-Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/denite.nvim'
+" Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'Shougo/denite.nvim'
+
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['typescript', 'html', 'css', 'scss'] }
+
+"Reason?
+Plug 'reasonml-editor/vim-reason-plus'
+" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 call plug#end()
+
+" let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+" let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+
+" Use `[c` and `]c` for navigate diagnostics
+" nmap <silent> [c <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" " Remap keys for gotos
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+
+" " Use K for show documentation in preview window
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+" nnoremap <silent> <D-l> :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+"autocmd CursorHold * silent call <SID>show_documentation()
+set updatetime=300
 
 let g:deoplete#enable_at_startup = 1
 
@@ -42,10 +82,6 @@ set shiftwidth=2
 set backspace=2
 set cursorline
 set nowrap
-
-" Insert lines without entering insert mode
-nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR><ESC>
-nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR><ESC>
 
 " tab completion
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
@@ -99,15 +135,14 @@ set background=dark
 let base16colorspace=256
 set termguicolors
 
-let g:gruvbox_contrast_dark='hard'
 
 let g:sierra_Midnight = 1
-colorscheme breve " Don't forget to copy into ~/.config/nvim/colors!
-" colorscheme base16-tomorrow-night " Don't forget to copy into ~/.config/nvim/colors!
+let g:quantum_black=1
+colorscheme hybrid
 
-let g:airline_theme='hybrid'
+"let g:airline_theme='quantum'
 
-let &colorcolumn="72,80"
+let &colorcolumn="72,80,100"
 
 set list listchars=tab:»·,trail:· " show extra space characters
 
@@ -154,8 +189,12 @@ au FileType cf set noexpandtab
 set signcolumn=yes
 let g:vimfiler_as_default_explorer = 1
 
-let g:ctrlp_custom_ignore = {'dir': '\v[\/](\.(env|git|hg|svn|dist|egg-info)|env|node_modules|bower_components|WEB-INF|build|dist)$' }
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v[\/](\.(env|git|hg|svn|dist|egg-info)|env|node_modules|bower_components|WEB-INF|build|dist)$',
+  \ 'file': '\.js$'
+  \ }
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_follow_symlinks = 1
 
 let g:python_highlight_all=1
 let python_highlight_all=1

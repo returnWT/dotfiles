@@ -59,7 +59,7 @@ remote_local_host () {
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     echo "\[\e[32m\]\u@\h\[\e[31m\](REMOTE)"
   else
-    echo "\[\e[32m\]\u@\h"
+    echo "\[\e[32m\]\u@crackbook"
   fi
 }
 
@@ -110,7 +110,7 @@ export PS1="\[\e[m\][\[\e[33m\]\t\[\e[m\]] \[\e[m\][$(remote_local_host)\[\e[m\]
 alias f5='source ~/.bashrc'
 
 # Autocomplete?
-complete -o nospace -o filenames -F fuzzypath cd ls cat
+#complete -o nospace -o filenames -F fuzzypath cd ls cat
 
 function fuzzypath() {
     if [ -z $2 ]
@@ -123,3 +123,21 @@ function fuzzypath() {
         COMPREPLY=( `ls -a $DIRPATH | grep -i "$FILTER" | gsed "s|^|$DIRPATH|g"` )
     fi
 }
+
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias watchPROJECT='fswatch -0 -o ~/projects/PROJECT | xargs -0 -n1 -I{} unison dev2 -batch -ui text'
+
+alias donvm='source ~/.nvm/nvm.sh'
+
+
+if [[ -f "$HOME/.okta/bash_functions" ]]; then
+    . "$HOME/.okta/bash_functions"
+fi
+if [[ -d "$HOME/.okta/bin" && ":$PATH:" != *":$HOME/.okta/bin:"* ]]; then
+    PATH="$HOME/.okta/bin:$PATH"
+fi
+
+alias dc='docker-compose'
